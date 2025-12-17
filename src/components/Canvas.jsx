@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import { Stage, Layer, Line } from "react-konva";
 
 const Canvas = () => {
-  const [tool, setTool] = useState("pen");
+  const [tool, setTool] = useState("pencil");
   const [lines, setLines] = useState([]);
   const isDrawing = useRef(false);
 
@@ -42,7 +42,7 @@ const Canvas = () => {
           setTool(e.target.value);
         }}
       >
-        <option value="pen">Pen</option>
+        <option value="pencil">Pencil</option>
         <option value="eraser">Eraser</option>
       </select>
       <Stage
@@ -59,7 +59,6 @@ const Canvas = () => {
               points={line.points}
               stroke="black"
               strokeWidth={0.5}
-              tension={1}
               lineCap="round"
               globalCompositeOperation={
                 line.tool === "eraser" ? "destination-out" : "source-over"
