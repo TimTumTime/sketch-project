@@ -43,5 +43,17 @@ A page describing all of the levels and proficiencies of sketching. Only hosts n
 
 ### What pages it has access to
 
--
--
+- Topics Page
+
+### What features does the page have:
+
+- Navigation to other pages via buttons
+
+## Topics Page
+
+A page describing all of the topics within a level of sketching. Only hosts navigation
+
+### What features does the page have:
+
+- Navigation to other pages via buttons
+- Use of a canvas component
