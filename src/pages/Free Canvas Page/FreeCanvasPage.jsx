@@ -1,7 +1,7 @@
 import React from "react";
 
 const FreeCanvasPage = () => {
-  return <div>FreeCanvasPage</div>;
+  return <div>Free Canvas</div>;
 };
 
 export default FreeCanvasPage;

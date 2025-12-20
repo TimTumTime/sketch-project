@@ -3,7 +3,7 @@ import { useState, useRef } from "react";
 
 import { Stage, Layer, Line } from "react-konva";
 
-const Canvas = () => {
+const Canvas = ({ height = window.innerHeight, width = window.innerWidth }) => {
   const [tool, setTool] = useState("pencil");
   const [lines, setLines] = useState([]);
   const isDrawing = useRef(false);
@@ -46,8 +46,9 @@ const Canvas = () => {
         <option value="eraser">Eraser</option>
       </select>
       <Stage
-        width={window.innerWidth}
-        height={window.innerHeight}
+        className="canvas"
+        width={width}
+        height={height}
         onMouseDown={handleMouseDown}
         onMousemove={handleMouseMove}
         onMouseup={handleMouseUp}
