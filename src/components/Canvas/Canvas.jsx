@@ -9,6 +9,7 @@ const Canvas = ({ height = window.innerHeight, width = window.innerWidth }) => {
   const isDrawing = useRef(false);
 
   const handleMouseDown = (e) => {
+    console.log("mouse down");
     isDrawing.current = true;
     const pos = e.target.getStage().getPointerPosition();
     setLines([...lines, { tool, points: [pos.x, pos.y] }]);
@@ -34,6 +35,37 @@ const Canvas = ({ height = window.innerHeight, width = window.innerWidth }) => {
     isDrawing.current = false;
   };
 
+  const handlePointerDown = (e) => {
+    console.log("pointer down");
+    isDrawing.current = true;
+    const pos = e.target.getStage().getPointerPosition();
+
+    const pressure = e.evt.pressure || 0.5;
+    setLines([...lines, { tool, points: [pos.x, pos.y], pressure }]);
+  };
+
+  const handlePointerMove = (e) => {
+    if (!isDrawing.current) {
+      return;
+    }
+    if (e.evt.pointerType !== "pen" && e.evt.pointerType !== "mouse") return;
+
+    const stage = e.target.getStage();
+    const point = stage.getPointerPosition();
+    const pressure = e.evt.pressure;
+
+    setLines((prevLines) => {
+      const lastLine = prevLines[prevLines.length - 1];
+
+      const updatedLine = {
+        ...lastLine,
+        points: lastLine.points.concat([point.x, point.y]),
+        pressure: pressure !== undefined ? pressure : lastLine.pressure,
+      };
+
+      return [...prevLines.slice(0, -1), updatedLine];
+    });
+  };
   return (
     <div>
       <select
@@ -49,9 +81,9 @@ const Canvas = ({ height = window.innerHeight, width = window.innerWidth }) => {
         className="canvas"
         width={width}
         height={height}
-        onMouseDown={handleMouseDown}
-        onMousemove={handleMouseMove}
-        onMouseup={handleMouseUp}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handleMouseUp}
       >
         <Layer>
           {lines.map((line, i) => (

@@ -32,28 +32,15 @@ A page avaliable to the user from the landing page. Serves as a practice ground 
 
 - n.a (currently)
 
-## Levels Page
+## Structured Learning Page
 
-A page describing all of the levels and proficiencies of sketching. Only hosts navigation
+A page avaliable to the user from the landing page. Serves as a study resource for the user.
 
 ### How to get to the page:
 
 - Open the web application
 - From the landing page, click the button labeled "Structured Learning"
 
-### What pages it has access to
+### What pages is has access to:
 
-- Topics Page
-
-### What features does the page have:
-
-- Navigation to other pages via buttons
-
-## Topics Page
-
-A page describing all of the topics within a level of sketching. Only hosts navigation
-
-### What features does the page have:
-
-- Navigation to other pages via buttons
-- Use of a canvas component
+- Study page

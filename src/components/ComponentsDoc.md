@@ -28,7 +28,7 @@ A component that hosts a slew of features for the canvas component.
 
 ### State
 
-## ButtonContainer.jsx
+## Button.jsx
 
 A component that behaves as a button, containing information about levels or topics (beginner, intermediate, advanced, etc). Meant to be mapped.
 
