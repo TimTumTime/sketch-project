@@ -1,9 +1,13 @@
 import React from "react";
+import { ContentRenderer } from "../../components";
+import { studyData } from "../../data";
 
-const StudyPage = () => {
+const StudyPage = ({ topic }) => {
   return (
     <section className="study-page">
-      <h2>Study Page</h2>
+      <ContentRenderer
+        content={studyData.find((item) => item.topic === topic)}
+      />
     </section>
   );
 };
