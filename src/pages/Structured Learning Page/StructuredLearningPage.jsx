@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { topicsData, levelsData } from "../../data";
-import { ButtonContainer } from "../../components";
+import { Button } from "../../components";
 
 const StructuredLearningPage = () => {
   const [currentView, setCurrentView] = useState("levels");
@@ -9,9 +9,10 @@ const StructuredLearningPage = () => {
   const [selectedLevel, setSelectedLevel] = useState(null);
 
   const handleClick = (e) => {
-    console.log(e.target.value);
     if (e.target.id === "level") {
-      setSelectedLevel(levels.find((level) => level.title === e.target.title));
+      setSelectedLevel(
+        levels.find((level) => level.title === e.target.title).title
+      );
       setCurrentView("topics");
     } else if (e.target.id === "topic") {
       window.location.href = `/study/${e.target.title}`;
@@ -21,7 +22,7 @@ const StructuredLearningPage = () => {
   useEffect(() => {
     if (currentView === "topics" && selectedLevel) {
       const filteredTopics = topicsData.filter(
-        (topic) => topic.proficiency === selectedLevel.title
+        (topic) => topic.proficiency === selectedLevel
       );
       setTopics(filteredTopics);
     }
@@ -33,29 +34,42 @@ const StructuredLearningPage = () => {
       {currentView === "levels" ? (
         <article>
           {levels.map((level, index) => {
+            const { title, info, useCase, topics } = level;
             return (
-              <ButtonContainer
+              <Button
                 key={index}
-                useCase="level"
-                title={level.title}
-                topics={level.topics}
                 handleClick={handleClick}
-              />
+                id={useCase}
+                title={title}
+              >
+                <h3>{title}</h3>
+                <p>{info}</p>
+                <div>
+                  <h4>Topics Covered:</h4>
+                  <ul>
+                    {topics.map((topic, idx) => (
+                      <li key={idx}>{topic}</li>
+                    ))}
+                  </ul>
+                </div>
+              </Button>
             );
           })}
         </article>
       ) : (
         <div>
           {topics.map((topic, index) => {
+            const { title, proficiency, hours, info, useCase } = topic;
+
             return (
-              <ButtonContainer
-                key={index}
-                useCase="topic"
-                title={topic.title}
-                proficiency={topic.proficiency}
-                hours={topic.hours}
-                info={topic.info}
-              />
+              <Button key={index} handleClick={handleClick} id={useCase}>
+                <h3>{title}</h3>
+                <p>{info}</p>
+                <div>
+                  <p>Proficiency: {proficiency}</p>
+                  <p>Estimated Hours: {hours}</p>
+                </div>
+              </Button>
             );
           })}
         </div>

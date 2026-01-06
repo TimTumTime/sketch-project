@@ -1,7 +1,12 @@
 import React from "react";
+import { Canvas } from "../../components";
 
 const FreeCanvasPage = () => {
-  return <div>Free Canvas</div>;
+  return (
+    <section className="free-canvas-page">
+      <Canvas />
+    </section>
+  );
 };
 
 export default FreeCanvasPage;

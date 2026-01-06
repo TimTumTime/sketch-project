@@ -4,7 +4,7 @@ import { Canvas } from "./components/index.jsx";
 function App() {
   return (
     <>
-      <Canvas />
+      <StructuredLearningPage />
     </>
   );
 }
