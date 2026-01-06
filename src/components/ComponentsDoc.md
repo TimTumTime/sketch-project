@@ -34,10 +34,15 @@ A component that behaves as a button, containing information about levels or top
 
 ### Props
 
-- index: Self-explanatory
-- useCase: A string describing what the button is, either a level or topic button
+- id: A string describing what the button is, either a level or topic button
 - title: A string describing the topic/level
-- proficency?: A string describing the level of proficiency the topics of the learning material is aimed towards
-- hours?: An integer estimating the hours required before the user can comfortably handle the topics
-- info: A string of some surface level info
-- icon: An image/icon of the button container
+- handleClick: A function that handles the button behaviour
+- children: The prop responsible for the elements residing inside the button
+
+## ContentRenderer.jsx
+
+A component that renders content for the study page. Conditionally renders the content with the help of a switch.
+
+### Props
+
+- content: An array of objects describing the content of the page
