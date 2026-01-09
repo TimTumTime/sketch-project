@@ -8,30 +8,7 @@ const Canvas = ({ height = window.innerHeight, width = window.innerWidth }) => {
   const [lines, setLines] = useState([]);
   const isDrawing = useRef(false);
 
-  const handleMouseDown = (e) => {
-    console.log("mouse down");
-    isDrawing.current = true;
-    const pos = e.target.getStage().getPointerPosition();
-    setLines([...lines, { tool, points: [pos.x, pos.y] }]);
-  };
-
-  const handleMouseMove = (e) => {
-    // no drawing - skipping
-    if (!isDrawing.current) {
-      return;
-    }
-    const stage = e.target.getStage();
-    const point = stage.getPointerPosition();
-    let lastLine = lines[lines.length - 1];
-    // add points
-    lastLine.points = lastLine.points.concat([point.x, point.y]);
-
-    // replace last
-    lines.splice(lines.length - 1, 1, lastLine);
-    setLines(lines.concat());
-  };
-
-  const handleMouseUp = () => {
+  const handlePointerUp = () => {
     isDrawing.current = false;
   };
 
@@ -83,7 +60,7 @@ const Canvas = ({ height = window.innerHeight, width = window.innerWidth }) => {
         height={height}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
-        onPointerUp={handleMouseUp}
+        onPointerUp={handlePointerUp}
       >
         <Layer>
           {lines.map((line, i) => (

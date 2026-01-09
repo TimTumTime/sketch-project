@@ -1,4 +1,3 @@
-import React from "react";
 import { ContentRenderer } from "../../components";
 import { studyData } from "../../data";
 import { useParams } from "react-router";
