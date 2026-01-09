@@ -1,6 +1,8 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import StructuredLearningPage from "./StructuredLearningPage";
 import { describe, expect, test } from "vitest";
+import { MemoryRouter } from "react-router-dom";
 
 describe("Rendering the page as intended", () => {
   test("Renders the canvas component within the whole screen", () => {
@@ -11,21 +13,29 @@ describe("Rendering the page as intended", () => {
 
 describe("Page functions as intended", () => {
   test("Clicking the level component removes all level components and brings up topic components", async () => {
-    const { getByText } = render(<StructuredLearningPage />);
+    const { getByRole } = render(
+      <MemoryRouter>
+        <StructuredLearningPage />
+      </MemoryRouter>
+    );
+    const user = userEvent.setup();
 
-    const levelElement = getByText("Beginner");
-    fireEvent.click(levelElement);
+    const levelElement = getByRole("button", { name: /Beginner/i });
+    await user.click(levelElement);
 
-    const newItems = await screen.findAllByText("Linework");
-    expect(newItems.length).toBeGreaterThan(0);
     expect(screen.queryByText("Beginner")).not.toBeInTheDocument();
   });
 
   test("Clicking the topic component navigates to a study page", async () => {
-    render(<StructuredLearningPage />);
+    render(
+      <MemoryRouter>
+        <StructuredLearningPage />
+      </MemoryRouter>
+    );
+    const user = userEvent.setup();
 
-    fireEvent.click(screen.getByText("Beginner"));
-    fireEvent.click(screen.getByText("Linework"));
+    await user.click(screen.getByRole("button", { name: /Beginner/i }));
+    await user.click(screen.getByRole("button", { name: /Linework/i }));
     expect(window.location.href).toContain("/study/");
   });
 });

@@ -5,9 +5,8 @@ import { FreeCanvasPage } from "./pages/index.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
-    <>
+    <main>
       <BrowserRouter>
-        <StudyPage topic={"Introduction to sketching"} />
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route
@@ -18,7 +17,7 @@ function App() {
           <Route path="/study/:topic" element={<StudyPage />} />
         </Routes>
       </BrowserRouter>
-    </>
+    </main>
   );
 }
 

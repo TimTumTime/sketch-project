@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { topicsData, levelsData } from "../../data";
 import { Button } from "../../components";
+import { Link } from "react-router-dom";
 
 const StructuredLearningPage = () => {
   const [currentView, setCurrentView] = useState("levels");
@@ -62,13 +63,15 @@ const StructuredLearningPage = () => {
             const { title, proficiency, hours, info, useCase } = topic;
 
             return (
-              <Button key={index} handleClick={handleClick} id={useCase}>
-                <h3>{title}</h3>
-                <p>{info}</p>
-                <div>
-                  <p>Proficiency: {proficiency}</p>
-                  <p>Estimated Hours: {hours}</p>
-                </div>
+              <Button key={index} id={useCase}>
+                <Link to={`/study/${title}`}>
+                  <h3>{title}</h3>
+                  <p>{info}</p>
+                  <div>
+                    <p>Proficiency: {proficiency}</p>
+                    <p>Estimated Hours: {hours}</p>
+                  </div>
+                </Link>
               </Button>
             );
           })}
