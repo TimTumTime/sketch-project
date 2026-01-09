@@ -10,12 +10,12 @@ const StructuredLearningPage = () => {
   const [selectedLevel, setSelectedLevel] = useState(null);
 
   const handleClick = (e) => {
-    if (e.target.id === "level") {
+    if (e.currentTarget.id === "level") {
       setSelectedLevel(
-        levels.find((level) => level.title === e.target.title).title
+        levels.find((level) => level.title === e.currentTarget.title).title
       );
       setCurrentView("topics");
-    } else if (e.target.id === "topic") {
+    } else if (e.currentTarget.id === "topic") {
       window.location.href = `/study/${e.target.title}`;
     }
   };
