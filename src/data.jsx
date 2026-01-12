@@ -131,3 +131,51 @@ export const studyData = [
     title: "Shapes",
   },
 ];
+
+export const lessonBasicMock = {
+  title: "This is a fake title",
+  topic: "Fake Topic",
+  content: [
+    {
+      type: "text",
+      data: "This is a fake paragraph.",
+    },
+    {
+      type: "image",
+      data: {
+        src: "/test-image.jpg",
+        alt: "This is a fake image",
+      },
+    },
+    {
+      type: "text",
+      data: "This is another fake paragraph",
+    },
+  ],
+};
+
+export const lessonStandardMock = {
+  title: "This is a fake title",
+  topic: "Fake Topic",
+  content: [
+    {
+      type: "text",
+      data: "This is a fake paragraph.",
+    },
+    {
+      type: "image",
+      data: {
+        src: "/test-image.jpg",
+        alt: "This is a fake image",
+      },
+    },
+    {
+      type: "text",
+      data: "This is another fake paragraph",
+    },
+    {
+      type: "canvas",
+      data: { height: 200, width: 200 },
+    },
+  ],
+};
