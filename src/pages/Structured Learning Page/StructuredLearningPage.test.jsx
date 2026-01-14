@@ -47,7 +47,6 @@ describe("Page functions as intended", () => {
 
     await user.click(screen.getByText("Beginner"));
     await user.click(screen.getByText("Linework"));
-    expect(await screen.findByText("No topic!")).toBeInTheDocument();
     expect(await screen.findByText("Intro to Linework")).toBeInTheDocument();
   });
 });

@@ -1,5 +1,5 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Rendering the component as intended > Renders the canvas component constrained within the topics 1`] = `[Function]`;
+exports[`Rendering the component as intended > Renders the canvas component constrained within a container 1`] = `[Function]`;
 
 exports[`Rendering the component as intended > Renders the canvas component within the whole screen 1`] = `[Function]`;

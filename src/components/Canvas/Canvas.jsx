@@ -15,9 +15,10 @@ const Canvas = ({ height = window.innerHeight, width = window.innerWidth }) => {
   const handlePointerDown = (e) => {
     console.log("pointer down");
     isDrawing.current = true;
-    const pos = e.target.getStage().getPointerPosition();
+    const stage = e.target.getStage?.() ?? e.target;
+    const pos = stage.getPointerPosition?.() ?? { x: e.clientX, y: e.clientY };
 
-    const pressure = e.evt.pressure || 0.5;
+    const pressure = e.evt?.pressure || 0.5;
     setLines([...lines, { tool, points: [pos.x, pos.y], pressure }]);
   };
 
@@ -25,11 +26,14 @@ const Canvas = ({ height = window.innerHeight, width = window.innerWidth }) => {
     if (!isDrawing.current) {
       return;
     }
-    if (e.evt.pointerType !== "pen" && e.evt.pointerType !== "mouse") return;
+    if (e.evt?.pointerType !== "pen" && e.evt?.pointerType !== "mouse") return;
 
-    const stage = e.target.getStage();
-    const point = stage.getPointerPosition();
-    const pressure = e.evt.pressure;
+    const stage = e.target.getStage?.();
+    const point = stage.getPointerPosition?.() ?? {
+      x: e.clientX,
+      y: e.clientY,
+    };
+    const pressure = e.evt?.pressure || 0.5;
 
     setLines((prevLines) => {
       const lastLine = prevLines[prevLines.length - 1];
@@ -55,6 +59,7 @@ const Canvas = ({ height = window.innerHeight, width = window.innerWidth }) => {
         <option value="eraser">Eraser</option>
       </select>
       <Stage
+        data-testid="canvas-stage"
         className="canvas"
         width={width}
         height={height}

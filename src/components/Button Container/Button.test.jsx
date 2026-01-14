@@ -1,8 +1,6 @@
-import { render, fireEvent, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { render } from "@testing-library/react";
 import { test, describe, expect } from "vitest";
 import Button from "./Button";
-import { vi } from "vitest";
 
 describe("Rendering the component properly", () => {
   test("Render a level component", () => {
@@ -23,5 +21,3 @@ describe("Rendering the component properly", () => {
     expect(asFragment).toMatchSnapshot();
   });
 });
-
-describe("Component functions as intended", () => {});

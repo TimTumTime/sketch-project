@@ -1,6 +1,6 @@
 import { ContentRenderer } from "../../components";
 import { studyData } from "../../data";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 
 const StudyPage = () => {
   const { topic } = useParams();
