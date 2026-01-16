@@ -1,3 +1,4 @@
+import ExercisePage from "./pages/Exercise Page/ExercisePage.jsx";
 import {
   FreeCanvasPage,
   LandingPage,
@@ -17,6 +18,7 @@ function App() {
           />
           <Route path="/free-canvas" element={<FreeCanvasPage />} />
           <Route path="/study/:topic" element={<StudyPage />} />
+          <Route path="/study/:topic/:exercise" element={<ExercisePage />} />
         </Routes>
       </BrowserRouter>
     </main>

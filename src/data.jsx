@@ -126,7 +126,19 @@ export const studyData = [
         data: '"Ok cool, drawing a circle is hard, but why is linework important?" Well, the better you are at linework, the more accurately you can translate your ideas. The more accurately you can translate your ideas, the better your drawings will look. It\'s as simple as that.',
       },
     ],
+    exercises: [
+      {
+        name: "Fundamentals",
+        subtitle:
+          "Focus on getting the feeling of drawing as lightly as possible down",
+      },
+      {
+        name: "Connect-the-dot",
+        subtitle: "Try to connect the dots in as little strokes as possible",
+      },
+    ],
   },
+
   {
     title: "Shapes",
   },
