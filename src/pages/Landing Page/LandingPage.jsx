@@ -1,9 +1,11 @@
 import React from "react";
 import { Button } from "../../components";
 import { Link } from "react-router-dom";
+import { useGlobalContext } from "../../Context";
 
 const LandingPage = () => {
-  const handleClick = () => {};
+  const { setTransition } = useGlobalContext();
+
   return (
     <div>
       Sketch Project

@@ -4,9 +4,10 @@ export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [isToolbarOpen, setIsToolbarOpen] = useState(false);
+  const [learningView, setLearningView] = useState("levels");
+  const [proficiency, setProficiency] = useState(null);
 
   const openToolbar = () => {
-    console.log("Toolbar OPen");
     setIsToolbarOpen(true);
   };
 
@@ -20,6 +21,10 @@ export const AppProvider = ({ children }) => {
         openToolbar,
         closeToolbar,
         isToolbarOpen,
+        learningView,
+        setLearningView,
+        proficiency,
+        setProficiency,
       }}
     >
       {children}

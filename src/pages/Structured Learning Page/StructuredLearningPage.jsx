@@ -2,58 +2,58 @@ import { useEffect, useState } from "react";
 import { topicsData, levelsData } from "../../data";
 import { Button } from "../../components";
 import { Link } from "react-router-dom";
+import { useGlobalContext } from "../../Context";
 
 const StructuredLearningPage = () => {
-  const [currentView, setCurrentView] = useState("levels");
   const [levels, setLevels] = useState(levelsData);
   const [topics, setTopics] = useState(topicsData);
-  const [selectedLevel, setSelectedLevel] = useState(null);
 
+  const {
+    learningView: learningView,
+    setLearningView: setLearningView,
+    proficiency: proficiency,
+    setProficiency: setProficiency,
+  } = useGlobalContext();
   const handleClick = (e) => {
     if (e.currentTarget.id === "level") {
-      setSelectedLevel(
+      setProficiency(
         levels.find((level) => level.title === e.currentTarget.title).title
       );
-      setCurrentView("topics");
-    } else if (e.currentTarget.id === "topic") {
-      window.location.href = `/study/${e.target.title}`;
+      setLearningView("topics");
     }
   };
 
   useEffect(() => {
-    if (currentView === "topics" && selectedLevel) {
+    if (learningView === "topics" && proficiency) {
       const filteredTopics = topicsData.filter(
-        (topic) => topic.proficiency === selectedLevel
+        (topic) => topic.proficiency === proficiency
       );
       setTopics(filteredTopics);
     }
-  }, [currentView, selectedLevel]);
+  }, [learningView, proficiency]);
 
   return (
     <section className="structured-learning">
       <h2>Structured Learning</h2>
-      {currentView === "levels" ? (
+      {learningView === "levels" ? (
         <article>
           {levels.map((level, index) => {
             const { title, info, useCase, topics } = level;
             return (
-              <Button
-                key={index}
-                handleClick={handleClick}
-                id={useCase}
-                title={title}
-              >
-                <h3>{title}</h3>
-                <p>{info}</p>
-                <div>
-                  <h4>Topics Covered:</h4>
-                  <ul>
-                    {topics.map((topic, idx) => (
-                      <li key={idx}>{topic}</li>
-                    ))}
-                  </ul>
-                </div>
-              </Button>
+              <span key={index}>
+                <Button handleClick={handleClick} id={useCase} title={title}>
+                  <h3>{title}</h3>
+                  <p>{info}</p>
+                  <div>
+                    <h4>Topics Covered:</h4>
+                    <ul>
+                      {topics.map((topic, idx) => (
+                        <li key={idx}>{topic}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </Button>
+              </span>
             );
           })}
         </article>
@@ -63,16 +63,18 @@ const StructuredLearningPage = () => {
             const { title, proficiency, hours, info, useCase } = topic;
 
             return (
-              <Button key={index} id={useCase}>
-                <Link to={`/study/${title}`}>
-                  <h3>{title}</h3>
-                  <p>{info}</p>
-                  <div>
-                    <p>Proficiency: {proficiency}</p>
-                    <p>Estimated Hours: {hours}</p>
-                  </div>
-                </Link>
-              </Button>
+              <span key={index}>
+                <Button id={useCase}>
+                  <Link to={`/study/${title}`}>
+                    <h3>{title}</h3>
+                    <p>{info}</p>
+                    <div>
+                      <p>Proficiency: {proficiency}</p>
+                      <p>Estimated Hours: {hours}</p>
+                    </div>
+                  </Link>
+                </Button>
+              </span>
             );
           })}
         </div>

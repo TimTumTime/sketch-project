@@ -6,6 +6,8 @@ import {
   StudyPage,
 } from "./pages/index.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import TransitionOverlay from "./components/Transition Overlay/TransitionOverlay.jsx";
+
 function App() {
   return (
     <main>

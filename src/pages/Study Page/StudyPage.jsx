@@ -1,3 +1,4 @@
+import { FaAngleLeft } from "react-icons/fa";
 import { Button, ContentRenderer } from "../../components";
 import { studyData } from "../../data";
 import { Link, useParams } from "react-router-dom";
@@ -12,6 +13,12 @@ const StudyPage = () => {
 
   return (
     <section className="study-page">
+      <Button className="back-btn" testId="back-btn">
+        <Link to={`/structured-learning`}>
+          <FaAngleLeft />
+          <h5>Back</h5>
+        </Link>
+      </Button>
       <ContentRenderer content={data} />
       {data.exercises ? (
         <Button className={"practice-btn"}>

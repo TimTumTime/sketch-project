@@ -258,6 +258,10 @@ Project CSS
 ===============
 */
 
+body.is-transitioned {
+  animation: fade-in 2s forwards;
+}
+
 main {
   min-height: 100vh;
   display: flex;
@@ -314,4 +318,16 @@ main {
   border-color: transparent;
   color: var(--red-dark);
   cursor: pointer;
+}
+
+.transition-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--primary-500);
+  color: white;
+  z-index: 9999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

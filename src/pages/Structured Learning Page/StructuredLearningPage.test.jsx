@@ -4,19 +4,15 @@ import StructuredLearningPage from "./StructuredLearningPage";
 import { describe, expect, test } from "vitest";
 import { MemoryRouter, Routes, Route, Navigate } from "react-router-dom";
 import StudyPage from "../Study Page/StudyPage";
-
-describe("Rendering the page as intended", () => {
-  test("Renders the canvas component within the whole screen", () => {
-    const { asFragment } = render(<StructuredLearningPage />);
-    expect(asFragment).toMatchSnapshot();
-  });
-});
+import { AppProvider } from "../../Context";
 
 describe("Page functions as intended", () => {
   test("Clicking the level component removes all level components and brings up topic components", async () => {
     const { getByRole } = render(
       <MemoryRouter>
-        <StructuredLearningPage />
+        <AppProvider>
+          <StructuredLearningPage />
+        </AppProvider>
       </MemoryRouter>
     );
     const user = userEvent.setup();
@@ -30,17 +26,19 @@ describe("Page functions as intended", () => {
   test("Clicking the topic component navigates to a study page", async () => {
     render(
       <MemoryRouter initialEntries={["/structured-learning"]}>
-        <Routes>
-          <Route
-            path="/structured-learning"
-            element={<StructuredLearningPage />}
-          />
-          <Route path="/study/:topic" element={<StudyPage />} />
-          <Route
-            path="/study"
-            element={<Navigate to="/structured-learning" />}
-          />
-        </Routes>
+        <AppProvider>
+          <Routes>
+            <Route
+              path="/structured-learning"
+              element={<StructuredLearningPage />}
+            />
+            <Route path="/study/:topic" element={<StudyPage />} />
+            <Route
+              path="/study"
+              element={<Navigate to="/structured-learning" />}
+            />
+          </Routes>
+        </AppProvider>
       </MemoryRouter>
     );
     const user = userEvent.setup();

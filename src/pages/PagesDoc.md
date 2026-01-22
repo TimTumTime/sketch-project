@@ -44,3 +44,33 @@ A page avaliable to the user from the landing page. Serves as a study resource f
 ### What pages is has access to:
 
 - Study page
+
+## Study Page
+
+A page which serves as a learning resource for a specific topic
+
+### How to get to the page:
+
+- Open the web application
+- From the landing page, click the button labeled "Structured Learning"
+- On the Structured Learning page, select a proficiency, then a topic
+
+### What pages it has access to:
+
+- Structured Learning Page
+- Exercise Page
+
+## Exercise Page
+
+A page dedicated to a certain exercise. Features a window-size canvas.
+
+### Hot to get to the page:
+
+- Open the web application
+- From the landing page, click the button labeled "Structured Learning"
+- On the Structured Learning page, select a proficiency, then a topic
+- At the bottom of the Study Page, click the "Practice" button
+
+### What pages it has access to:
+
+- n.a
