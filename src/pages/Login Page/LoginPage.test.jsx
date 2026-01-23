@@ -16,6 +16,20 @@ describe("Page functions as intended", () => {
     await user.type(screen);
   });
 
+  test("Pressing the button to switch to register view works", async () => {
+    render(
+      <MemoryRouter>
+        <LoginPage />
+      </MemoryRouter>
+    );
+
+    const user = userEvent.setup();
+
+    await user.click(screen.getByText("Register"));
+
+    expect(screen.getByText("Register an Account")).toBeInTheDocument();
+  });
+
   test("Logging in an existing user calls the login function", async () => {
     render(
       <MemoryRouter>

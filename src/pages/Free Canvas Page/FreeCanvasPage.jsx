@@ -3,6 +3,7 @@ import { Canvas } from "../../components";
 import ToolBar from "../../components/Tool Bar/ToolBar";
 import { useGlobalContext } from "../../Context.jsx";
 import { FaAngleRight } from "react-icons/fa";
+import "./FreeCanvasPage.css";
 
 const FreeCanvasPage = () => {
   const { isToolbarOpen: isToolbarOpen, openToolbar: openToolbar } =

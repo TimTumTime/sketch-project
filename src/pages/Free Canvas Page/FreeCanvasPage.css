@@ -1,0 +1,52 @@
+.toolbar {
+  position: fixed;
+  height: 100%;
+  width: 20%;
+  top: 0;
+  right: 0;
+  background: var(--white);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  row-gap: 1rem;
+  box-shadow: var(--red-dark);
+  transition: var(--transition);
+  /* toggle logic */
+  transform: translateX(100%);
+}
+
+.toolbar-toggle {
+  position: fixed;
+  top: 2rem;
+  right: 3rem;
+  font-size: 2rem;
+  background: transparent;
+  border-color: transparent;
+  color: var(--primary-500);
+  cursor: pointer;
+}
+
+.show-toolbar {
+  transform: translateX(0);
+}
+
+.toolbar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+}
+
+.logo {
+  height: 40px;
+}
+
+.close-btn {
+  font-size: 1.75rem;
+  background: transparent;
+  border-color: transparent;
+  color: var(--red-dark);
+  cursor: pointer;
+}
+.toolbar-content {
+  padding: 0 1.5rem;
+}
