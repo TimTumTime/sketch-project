@@ -14,12 +14,12 @@ const LandingPage = () => {
         <h2>Sketch Project</h2>
 
         <span>
-          <Button>
-            <Link to="/structured-learning">Structured Learning</Link>
-          </Button>
-          <Button>
-            <Link to="/free-canvas">Free Canvas</Link>
-          </Button>
+          <Link to="/structured-learning">
+            <Button>Structured Learning</Button>
+          </Link>
+          <Link to="/free-canvas">
+            <Button>Free Canvas</Button>
+          </Link>
         </span>
       </div>
     </section>

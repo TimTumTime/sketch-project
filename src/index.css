@@ -264,7 +264,7 @@ body.is-transitioned {
 
 main {
   min-height: 100vh;
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
   background: var(--grey-100);

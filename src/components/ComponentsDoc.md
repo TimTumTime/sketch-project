@@ -46,3 +46,11 @@ A component that renders content for the study page. Conditionally renders the c
 ### Props
 
 - content: An array of objects describing the content of the page
+
+## HeaderBar.jsx
+
+A component that is placed at the top of every page. Hosts easy navigation.
+
+### Props
+
+- isLoggedIn: A boolean that describes if the user is logged in

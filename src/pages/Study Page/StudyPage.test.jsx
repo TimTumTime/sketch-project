@@ -54,10 +54,34 @@ describe("Page functions as intended", () => {
 
     const user = userEvent.setup();
 
-    await user.click(screen.getByText("Back"));
+    await user.click(screen.getByTestId("back-btn"));
 
     expect(screen.getAllByText("Estimated Hours: 0")).length.greaterThanOrEqual(
       3
     );
+  });
+
+  test("Clicking the return button when no exercises are present navigates to the structured learning page with the correct view", async () => {
+    render(
+      <MemoryRouter initialEntries={["/structured-learning"]}>
+        <AppContext.Provider value={{ learningView: "topics" }}>
+          <Routes>
+            <Route
+              path="/structured-learning"
+              element={<StructuredLearningPage />}
+            />
+            <Route path="/study/:topic" element={<StudyPage />} />
+          </Routes>
+        </AppContext.Provider>
+      </MemoryRouter>
+    );
+
+    const user = userEvent.setup();
+
+    await user.click(screen.getByText("Introduction to sketching"));
+    await user.click(screen.getByText("Return to Structured Learning"));
+    expect(
+      screen.getByRole("button", { name: /Linework/i })
+    ).toBeInTheDocument();
   });
 });

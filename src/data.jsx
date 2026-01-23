@@ -71,21 +71,25 @@ export const levelsData = [
   {
     useCase: "level",
     title: "Beginner",
+    logo: "https://www.svgrepo.com/show/92239/crayola.svg",
     topics: ["Linework", "Shapes", "Perspective"],
   },
   {
     useCase: "level",
     title: "Intermediate",
-    topics: ["Color Theory", "Lighting", "Anatomy", "Gesture"],
+    logo: "https://www.svgrepo.com/show/59700/pen.svg",
+    topics: ["Color Theory", "Lighting", "Anatomy"],
   },
   {
     useCase: "level",
     title: "Advanced",
+    logo: "https://www.svgrepo.com/show/23942/paint-brush.svg",
     topics: ["Composition", "Dynamic Posing", "Advanced Rendering"],
   },
   {
     useCase: "level",
     title: "Professional",
+    logo: "https://www.svgrepo.com/show/75935/artist-barrett.svg",
     topics: ["Portfolio Development", "Industry Techniques", "Client Work"],
   },
 ];

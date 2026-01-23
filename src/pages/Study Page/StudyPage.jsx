@@ -2,7 +2,7 @@ import { FaAngleLeft } from "react-icons/fa";
 import { Button, ContentRenderer } from "../../components";
 import { studyData } from "../../data";
 import { Link, useParams } from "react-router-dom";
-
+import "./StudyPage.css";
 const StudyPage = () => {
   const { topic } = useParams();
   if (topic === undefined) {
@@ -13,26 +13,29 @@ const StudyPage = () => {
 
   return (
     <section className="study-page">
-      <Button className="back-btn" testId="back-btn">
-        <Link to={`/structured-learning`}>
-          <FaAngleLeft />
-          <h5>Back</h5>
-        </Link>
-      </Button>
-      <ContentRenderer content={data} />
-      {data.exercises ? (
-        <Button className={"practice-btn"}>
-          <Link to={`/study/${topic}/${data.exercises[0].name}`}>
-            <h5>Practice {data.exercises[0].name}</h5>
-          </Link>
-        </Button>
-      ) : (
-        <Button>
+      <div className="study-content">
+        <ContentRenderer content={data} />
+        {data.exercises ? (
+          <div>
+            <Link to={`/structured-learning`}>
+              <Button className="back-btn" testId="back-btn">
+                <FaAngleLeft />
+              </Button>
+            </Link>
+            <Link to={`/study/${topic}/${data.exercises[0].name}`}>
+              <Button className={"practice-btn"}>
+                <h5>Practice {data.exercises[0].name}</h5>
+              </Button>
+            </Link>
+          </div>
+        ) : (
           <Link to={`/structured-learning`}>
-            <h5>Return to Structured Learning</h5>
+            <Button>
+              <h5>Return to Structured Learning</h5>
+            </Button>
           </Link>
-        </Button>
-      )}
+        )}
+      </div>
     </section>
   );
 };

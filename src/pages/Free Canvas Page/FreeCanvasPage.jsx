@@ -1,5 +1,5 @@
 import React from "react";
-import { Canvas } from "../../components";
+import { Canvas, HeaderBar } from "../../components";
 import ToolBar from "../../components/Tool Bar/ToolBar";
 import { useGlobalContext } from "../../Context.jsx";
 import { FaAngleRight } from "react-icons/fa";
