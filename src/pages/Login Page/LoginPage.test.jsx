@@ -9,7 +9,7 @@ describe("Page functions as intended", () => {
     render(
       <MemoryRouter>
         <LoginPage />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     const user = userEvent.setup();
 
@@ -20,12 +20,12 @@ describe("Page functions as intended", () => {
     render(
       <MemoryRouter>
         <LoginPage />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     const user = userEvent.setup();
 
-    await user.click(screen.getByText("Register"));
+    await user.click(screen.getByText("Sign Up"));
 
     expect(screen.getByText("Register an Account")).toBeInTheDocument();
   });
@@ -34,7 +34,7 @@ describe("Page functions as intended", () => {
     render(
       <MemoryRouter>
         <LoginPage />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     const user = userEvent.setup();
 
@@ -49,7 +49,7 @@ describe("Page functions as intended", () => {
     render(
       <MemoryRouter>
         <LoginPage />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     const user = userEvent.setup();
 

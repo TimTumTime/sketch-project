@@ -9,23 +9,32 @@ import {
   StructuredLearningPage,
   FreeCanvasPage,
 } from "../../pages/index.jsx";
+import { AppProvider } from "../../Context";
 
 describe("Component functions as intended", () => {
   test("Clicking the Login button navigates to the login page", async () => {
     render(
-      <MemoryRouter>
-        <HeaderBar />
-        <Routes>
-          <Route path="/login" element={<LoginPage />} />
-        </Routes>
-      </MemoryRouter>
+      <MemoryRouter initialEntries={["/free-canvas"]}>
+        <AppProvider>
+          <HeaderBar />
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/free-canvas" element={<FreeCanvasPage />} />
+            <Route
+              path="/structured-learning"
+              element={<StructuredLearningPage />}
+            />
+            <Route path="/login" element={<LoginPage />} />
+          </Routes>
+        </AppProvider>
+      </MemoryRouter>,
     );
 
     const user = userEvent.setup();
 
     await user.click(screen.getByRole("button", { name: /login/i }));
     expect(
-      screen.getByRole("input", { name: /username/i })
+      screen.getByRole("input", { name: /username/i }),
     ).toBeInTheDocument();
   });
 
@@ -33,18 +42,21 @@ describe("Component functions as intended", () => {
     render(
       <MemoryRouter>
         <HeaderBar isLoggedIn={true} />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
   });
 
   test("Clicking the 'Home' button navigates to the home page", async () => {
     render(
-      <MemoryRouter>
-        <HeaderBar />
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-        </Routes>
-      </MemoryRouter>
+      <MemoryRouter initialEntries={["/free-canvas"]}>
+        <AppProvider>
+          <HeaderBar />
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/free-canvas" element={<FreeCanvasPage />} />
+          </Routes>
+        </AppProvider>
+      </MemoryRouter>,
     );
     const user = userEvent.setup();
 
@@ -54,36 +66,60 @@ describe("Component functions as intended", () => {
 
   test("Clicking the 'Tutorials' button navigates to the Structured Learning page", async () => {
     render(
-      <MemoryRouter>
-        <HeaderBar />
-        <Routes>
-          <Route
-            path="/structured-learning"
-            element={<StructuredLearningPage />}
-          />
-        </Routes>
-      </MemoryRouter>
+      <MemoryRouter initialEntries={["/free-canvas"]}>
+        <AppProvider>
+          <HeaderBar />
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/free-canvas" element={<FreeCanvasPage />} />
+            <Route
+              path="/structured-learning"
+              element={<StructuredLearningPage />}
+            />
+            <Route path="/login" element={<LoginPage />} />
+          </Routes>
+        </AppProvider>
+      </MemoryRouter>,
     );
 
     const user = userEvent.setup();
 
     await user.click(screen.getByRole("button", { name: /tutorials/i }));
     expect(
-      screen.getByRole("button", { name: /beginner/i })
+      screen.getByRole("button", { name: /beginner/i }),
     ).toBeInTheDocument();
   });
 
   test("Clicking the 'Canvas' button navigates to the Free Canvas Page", async () => {
     render(
-      <MemoryRouter>
-        <HeaderBar />
-        <Routes>
-          <Route path="/free-canvas" element={<FreeCanvasPage />} />
-        </Routes>
-      </MemoryRouter>
+      <MemoryRouter initialEntries={["/structured-learning"]}>
+        <AppProvider>
+          <HeaderBar />
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/free-canvas" element={<FreeCanvasPage />} />
+            <Route
+              path="/structured-learning"
+              element={<StructuredLearningPage />}
+            />
+            <Route path="/login" element={<LoginPage />} />
+          </Routes>
+        </AppProvider>
+      </MemoryRouter>,
     );
     const user = userEvent.setup();
-    await user.click(screen.getByRole("button", { name: /canvas/i }));
-    expect(screen.getByText(/Free Canvas/i)).toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: /Canvas/ }));
+    expect(screen.getByText(/Pencil/i)).toBeInTheDocument();
+  });
+
+  test("Header bar renders properly on a smaller screen", async () => {
+    global.innerWidth = 500;
+    render(
+      <MemoryRouter>
+        <HeaderBar />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByRole("button", { name: /menu/i })).toBeInTheDocument();
   });
 });
