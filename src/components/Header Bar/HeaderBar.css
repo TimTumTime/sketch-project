@@ -1,5 +1,5 @@
 .header-bar {
-  display: flex;
+  display: inline-flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20rem;
@@ -7,26 +7,78 @@
   border-bottom: 1px solid #ddd;
 }
 
-.header-bar span {
+.header-bar div {
   font-size: 1.5rem;
   font-weight: bold;
 }
 
-.header-bar button.login-button {
-  margin-left: 30vw;
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
+.logo h3 {
+  margin: 0;
+  color: var(--primary-500);
+  display: fixed;
+  left: 20px;
+  overflow: hidden;
 }
-.header-bar button.account-button {
-  margin-left: 30vw;
+
+.links-container {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  overflow: hidden;
+  align-self: center;
+}
+
+.header-bar button.button {
+  color: var(--grey-700);
+  font-size: 1rem;
+  text-transform: capitalize;
+  letter-spacing: var(--letterSpacing);
+  display: block;
+  padding: 0.5rem 1rem;
+  transition: var(--transition);
+}
+
+.header-bar button.button:hover {
+  background: var(--primary-500);
+  color: var(--white);
+  box-shadow: var(--shadow-2);
+}
+
+.header-bar button.login-button {
+  position: fixed;
+  top: 10px;
+  right: 20px;
   text-decoration: none;
   color: #333;
   font-weight: 500;
 }
 
-@media screen and (max-width: 768px) {
+.header-bar button.account-button {
+  margin-right: auto;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
   .header-bar {
-    padding: 10px 20rem;
+    padding: 10px 5rem;
+  }
+
+  .header-toggle {
+    display: none;
+  }
+
+  .links-container {
+    height: auto !important;
+  }
+
+  .header-bar button.button {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .header-bar a {
+    font-size: 0.9rem;
   }
 }

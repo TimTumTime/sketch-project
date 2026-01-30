@@ -3,7 +3,7 @@ import Canvas from "./Canvas";
 import { describe, expect, test, vi } from "vitest";
 import userEvent from "@testing-library/user-event";
 
-describe("Rendering the component as intended", () => {
+describe("Phase 2}", () => {
   test("Renders the canvas component within the whole screen", () => {
     const { asFragment } = render(<Canvas />);
     expect(asFragment).toMatchSnapshot();

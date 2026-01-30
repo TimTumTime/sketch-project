@@ -6,7 +6,7 @@ import { MemoryRouter, Routes, Route, Navigate } from "react-router-dom";
 import StudyPage from "../Study Page/StudyPage";
 import { AppProvider } from "../../Context";
 
-describe("Page functions as intended", () => {
+describe("Phase 2", () => {
   test("Clicking the level component removes all level components and brings up topic components", async () => {
     const { getByRole } = render(
       <MemoryRouter>

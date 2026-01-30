@@ -2,9 +2,8 @@ import { getByRole, render, screen } from "@testing-library/react";
 import ContentRenderer from "./ContentRenderer";
 import { describe, expect, test } from "vitest";
 import { lessonBasicMock, lessonStandardMock } from "../../data";
-import Canvas from "../Canvas/Canvas";
 
-describe("Component functions as intended", () => {
+describe("Phase 2", () => {
   test("Content renders with no data", async () => {
     render(<ContentRenderer />);
 
