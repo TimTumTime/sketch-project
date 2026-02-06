@@ -1,22 +1,13 @@
-import React from "react";
-import { Canvas, HeaderBar } from "../../components";
-import ToolBar from "../../components/Tool Bar/ToolBar";
-import { useGlobalContext } from "../../Context.jsx";
-import { FaAngleRight } from "react-icons/fa";
+import { Canvas } from "../../components";
+import { CanvasProvider } from "../../Context.jsx";
 import "./FreeCanvasPage.css";
 
 const FreeCanvasPage = () => {
-  const { isToolbarOpen: isToolbarOpen, openToolbar: openToolbar } =
-    useGlobalContext();
-
   return (
     <section className="free-canvas-page">
-      <Canvas />
-
-      <button onClick={openToolbar} className="toolbar-toggle">
-        <FaAngleRight />
-      </button>
-      <ToolBar />
+      <CanvasProvider>
+        <Canvas isToolBarPresent={true} />
+      </CanvasProvider>
     </section>
   );
 };

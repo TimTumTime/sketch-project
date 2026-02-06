@@ -1,0 +1,16 @@
+.thickness-slider {
+  width: 80%;
+  display: flex;
+  position: relative;
+  top: 10%;
+  left: 10%;
+  height: 0%;
+}
+
+.close-button {
+  width: 50%;
+  position: relative;
+}
+
+.color-sliders {
+}
